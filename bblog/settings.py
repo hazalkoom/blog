@@ -48,6 +48,7 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
+        'django_auth',
         
     ]
 
@@ -102,6 +103,8 @@ class Dev(Configuration):
     # Password validation
     # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
+    AUTH_USER_MODEL = "django_auth.User"
+    
     AUTH_PASSWORD_VALIDATORS = [
         {
             'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
