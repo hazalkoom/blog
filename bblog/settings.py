@@ -41,6 +41,7 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        "django.contrib.sites",
         'django.contrib.staticfiles',
         # my apps
         
@@ -50,7 +51,19 @@ class Dev(Configuration):
         'debug_toolbar',
         'django_auth',
         
+        
+        "allauth",
+        "allauth.account",
+        "allauth.socialaccount",
+        "allauth.socialaccount.providers.google"
     ]
+    SITE_ID = 1
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_LOGIN_METHODS = {'email'}
+    ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+    
+
+    
 
     MIDDLEWARE = [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -61,6 +74,7 @@ class Dev(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'allauth.account.middleware.AccountMiddleware',
     ]
 
     INTERNAL_IPS = ["127.0.0.1"]
@@ -139,6 +153,8 @@ class Dev(Configuration):
 
     USE_TZ = True
 
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -191,7 +207,7 @@ class Dev(Configuration):
         "level": "DEBUG",
     },
 }
-
+    
 
 
 
