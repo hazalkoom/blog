@@ -51,7 +51,7 @@ class Dev(Configuration):
         'debug_toolbar',
         'django_auth',
         
-        
+        'rest_framework',
         "allauth",
         "allauth.account",
         "allauth.socialaccount",
