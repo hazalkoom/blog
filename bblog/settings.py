@@ -52,6 +52,7 @@ class Dev(Configuration):
         'django_auth',
         
         'rest_framework',
+        'rest_framework.authtoken',
         "allauth",
         "allauth.account",
         "allauth.socialaccount",
@@ -62,6 +63,14 @@ class Dev(Configuration):
     ACCOUNT_LOGIN_METHODS = {'email'}
     ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
     
+    REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+
 
     
 
