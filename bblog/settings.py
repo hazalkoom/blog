@@ -62,6 +62,7 @@ class Dev(Configuration):
         'allauth.socialaccount',
         'allauth.socialaccount.providers.google',
         'drf_yasg',
+        'versatileimagefield',
         
     ]
     SITE_ID = 1
@@ -214,6 +215,10 @@ class Dev(Configuration):
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+    
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
+
     
     LOGGING = {
     "version": 1,

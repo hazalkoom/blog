@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
+from versatileimagefield.fields import VersatileImageField, PPOIField
 
 # Create your models here.
 
@@ -26,6 +27,10 @@ class Comment(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
 class Post(models.Model):
+    hero_image = VersatileImageField(
+        upload_to="hero_images", ppoi_field="ppoi", null=True, blank=True
+    )
+    ppoi = PPOIField(null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
