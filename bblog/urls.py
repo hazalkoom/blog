@@ -25,6 +25,7 @@ from django_auth.forms import BlangoRegistrationForm
 from django_registration.backends.activation.views import ActivationView
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog.views.index),
@@ -43,6 +44,7 @@ urlpatterns = [
     path('accounts/activate/<str:activation_key>/', ActivationView.as_view(), name='django_registration_activate'),
     path("accounts/", include("django_registration.backends.activation.urls")),
     path("api/v1/", include("blog.api.urls")),
+
 
     
     

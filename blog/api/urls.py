@@ -7,6 +7,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework.routers import DefaultRouter
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 router = DefaultRouter()
@@ -32,6 +33,9 @@ schema_view = get_schema_view(openapi.Info(
 urlpatterns += [
     path("auth/", include("rest_framework.urls")),
     path("token-auth/", views.obtain_auth_token),
+    path("jwt/", TokenObtainPairView.as_view(), name="jwt_obtain_pair"),
+    path("jwt/refresh/", TokenRefreshView.as_view(), name="jwt_refresh"),
+
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
@@ -48,6 +52,7 @@ urlpatterns += [
         PostViewSet.as_view({"get": "list"}),
         name="posts-by-time",
     ),
+    
 ]
 
 

@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from configurations import Configuration
 from configurations import values
+from datetime import timedelta
 
 
 class Dev(Configuration):
@@ -73,6 +74,7 @@ class Dev(Configuration):
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         
     ],
     "DEFAULT_PERMISSION_CLASSES": [
@@ -91,6 +93,8 @@ class Dev(Configuration):
         "user_sustained": "5000/day",
         "user_burst": "100/minute",
         },
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+        "PAGE_SIZE": 100,
 }
     SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
@@ -98,6 +102,10 @@ class Dev(Configuration):
         "Basic": {"type": "basic"},
     }
 }
+    SIMPLE_JWT = {
+        "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+        "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    }
 
 
 
