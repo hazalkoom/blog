@@ -48,13 +48,13 @@ class Dev(Configuration):
         # my apps
 
         'blog',
+        
+        
+        # third party apps
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
-        'django_auth',
-        
-        # third party apps
-        
+        'django_auth',       
         'rest_framework',
         'rest_framework.authtoken',
         'allauth',
