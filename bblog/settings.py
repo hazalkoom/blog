@@ -95,7 +95,7 @@ class Dev(Configuration):
         "user_burst": "100/minute",
         },
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-        "PAGE_SIZE": 100,
+        "PAGE_SIZE": 5,
 }
     SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
@@ -108,6 +108,13 @@ class Dev(Configuration):
         "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     }
 
+    VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'default': [
+        ('full_size', 'url'),
+        ('thumbnail', 'thumbnail__100x100'),
+        ('square_crop', 'crop__200x200'),
+    ]
+}
 
 
     
